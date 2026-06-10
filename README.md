@@ -1,2 +1,12 @@
 # KrishiSathi-AI
-An AI-powered crop advisory web application designed to support farmers with intelligent guidance for crop health, pest management, weather-aware recommendations, and post-harvest practices.
+
+AI-Powered Smart Crop Advisory System
+
+## Tech Stack
+Frontend: React JS
+Backend: FastAPI
+Database: MongoDB Atlas
+AI: Gemini API
+
+## Status
+🚧 Project Proposal Stage
