@@ -12,7 +12,7 @@ About KrishiSathi
 
 <p className="mt-5">
 
-AI-powered agriculture platform.
+Smart farming platform powered by AI.
 
 </p>
 
