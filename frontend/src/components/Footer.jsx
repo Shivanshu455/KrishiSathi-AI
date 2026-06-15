@@ -20,7 +20,7 @@ KrishiSathi 🌾
 
 <p className="mt-3">
 
-Smart Farming with AI
+Empowering Farmers with AI
 
 </p>
 
