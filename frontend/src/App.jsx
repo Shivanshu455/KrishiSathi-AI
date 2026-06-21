@@ -1,9 +1,5 @@
-import {
-BrowserRouter,
-Routes,
-Route
-}
-from "react-router-dom"
+import "./App.css"
+import { Routes, Route } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
@@ -12,45 +8,47 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Dashboard from "./pages/Dashboard"
 import Login from "./pages/Login"
-
-function App(){
-
-return(
-
-<BrowserRouter>
-
-<Navbar/>
-
-<Routes>
-
+import ComponentsDemo from "./pages/ComponentsDemo"
 <Route
-path="/"
-element={<Home/>}
+path="/components"
+element={<ComponentsDemo/>}
 />
 
-<Route
-path="/about"
-element={<About/>}
-/>
+function App() {
 
-<Route
-path="/dashboard"
-element={<Dashboard/>}
-/>
+  return (
+    <>
+      <Navbar />
 
-<Route
-path="/login"
-element={<Login/>}
-/>
+      <Routes>
 
-</Routes>
+        <Route path="/" element={<Home />} />
 
-<Footer/>
+        <Route
+          path="/about"
+          element={<About />}
+        />
 
-</BrowserRouter>
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
 
-)
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
+        <Route
+          path="/components"
+          element={<ComponentsDemo />}
+        />
+
+      </Routes>
+
+      <Footer />
+    </>
+  )
 }
 
 export default App

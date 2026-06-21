@@ -1,47 +1,105 @@
-<nav
-className="
-bg-green-700
-text-white
-px-6
-py-4
-flex
-flex-col
-md:flex-row
-justify-between
-items-center
-"
->
+import { Link } from "react-router-dom"
+import ThemeToggle from "./ThemeToggle"
 
-<h1
-className="
-text-2xl
-font-bold
-"
->
+function Navbar() {
 
-KrishiSathi 🌾
+  return (
 
-</h1>
+    <nav
+      style={{
+        background: "#008C3A",
+        padding: "20px 40px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
+      }}
+    >
 
-<div
-className="
-flex
-flex-wrap
-justify-center
-gap-6
-mt-4
-md:mt-0
-"
->
+      {/* Logo */}
 
-<Link to="/">Home</Link>
+      <h1
+        style={{
+          color: "white",
+          fontSize: "2rem"
+        }}
+      >
+        KrishiSathi 🌾
+      </h1>
 
-<Link to="/about">About</Link>
 
-<Link to="/dashboard">Dashboard</Link>
+      {/* Navigation */}
 
-<Link to="/login">Login</Link>
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          alignItems: "center"
+        }}
+      >
 
-</div>
+        <Link
+          to="/"
+          style={{
+            color: "white",
+            textDecoration: "none"
+          }}
+        >
+          Home
+        </Link>
 
-</nav>
+
+        <Link
+          to="/about"
+          style={{
+            color: "white",
+            textDecoration: "none"
+          }}
+        >
+          About
+        </Link>
+
+
+        <Link
+          to="/dashboard"
+          style={{
+            color: "white",
+            textDecoration: "none"
+          }}
+        >
+          Dashboard
+        </Link>
+
+
+        <Link
+          to="/login"
+          style={{
+            color: "white",
+            textDecoration: "none"
+          }}
+        >
+          Login
+        </Link>
+
+        <Link
+          to="/components"
+          style={{
+            color: "white",
+            textDecoration: "none"
+          }}
+        >
+Components
+</Link>
+
+
+        {/* Week 3 Dark Light Toggle */}
+
+        <ThemeToggle />
+
+      </div>
+
+    </nav>
+
+  )
+}
+
+export default Navbar

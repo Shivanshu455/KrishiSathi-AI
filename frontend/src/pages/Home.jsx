@@ -1,40 +1,65 @@
-import Hero from "../components/Hero"
-import Card from "../components/Card"
-
 function Home() {
+  return (
 
-return (
+    <main>
 
-<>
+      <section className="hero">
 
-<Hero/>
+        <h1>
+          Smart Farming Starts Here
+        </h1>
 
-<div
-className="
-flex
-justify-center
-gap-10
-pb-20
-flex-wrap
-"
->
+        <p>
+          AI-powered crop advisory for better farming decisions
+        </p>
 
-<Card
-title="Crop Advisory"
-description="Get AI-powered recommendations for crop planning."
-/>
+        <button>
+          Get Started
+        </button>
 
-<Card
-title="Weather Insights"
-description="Receive weather-aware farming suggestions."
-/>
+      </section>
 
-</div>
 
-</>
+      <section className="cards">
 
-)
+        <div className="card">
 
+          <h2>
+            Crop Advisory
+          </h2>
+
+          <p>
+            Get AI-powered recommendations for crop planning.
+          </p>
+
+          <button>
+            Explore
+          </button>
+
+        </div>
+
+
+        <div className="card">
+
+          <h2>
+            Weather Insights
+          </h2>
+
+          <p>
+            Receive weather-aware farming suggestions.
+          </p>
+
+          <button>
+            Explore
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  )
 }
 
 export default Home
