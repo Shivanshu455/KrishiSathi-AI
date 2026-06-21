@@ -1,59 +1,91 @@
 # KrishiSathi 🌾
 
-AI-Powered Smart Crop Advisory Web Application
+AI-Powered Smart Crop Advisory Platform
+
+---
 
 ## Overview
 
-KrishiSathi is an AI-assisted full stack web application designed to support farmers with intelligent agricultural guidance.
+KrishiSathi is an AI-assisted full stack web application designed to help farmers make smarter agricultural decisions using intelligent recommendations and modern web technologies.
 
-This project aims to provide:
+The platform aims to improve agricultural productivity through crop guidance, weather-aware insights, and AI-driven assistance.
 
-* Crop advisory recommendations
-* Weather-aware farming insights
-* Smart agricultural assistance
-* Improved decision-making support
+---
 
-This repository currently contains the frontend skeleton developed as part of Week 2 deliverables.
+## Current Features
+
+### Core UI Features
+- Responsive multi-page frontend
+- Dark / Light Mode (persistent)
+- Reusable UI Component Library
+- Mobile-first responsive layouts
+- Modern dashboard-oriented interface
+
+### Agricultural Features (Planned)
+- Crop Advisory Recommendations
+- Weather-aware Farming Insights
+- AI-based Decision Support
+- Farm Health Monitoring
+- Yield Prediction
+- Smart Agricultural Assistant
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-
-* React JS
-* Vite
-* Tailwind CSS
+- React JS
+- Vite
+- CSS
 
 ### Routing
+- React Router DOM
 
-* React Router DOM
+### Backend (Planned)
+- FastAPI (Python)
 
-### Planned Backend
+### Database (Planned)
+- MongoDB Atlas
 
-* FastAPI (Python)
-
-### Planned Database
-
-* MongoDB Atlas
-
-### Planned AI Integration
-
-* Gemini API
+### AI Integration (Planned)
+- Gemini API
 
 ---
 
-## Features Implemented (Week 2)
+## Week 3 Deliverables Completed
 
-* Responsive Navbar
-* Hero Section
-* Reusable Card Component
-* Footer Component
-* Multiple Page Routing
-* Home Page
-* About Page
-* Dashboard Page
-* Login Page
+### Design
+- Lo-fi Wireframes (Figma)
+- Multi-screen application planning
+
+### UI Development
+- Responsive Navbar
+- Hero Section
+- Dashboard Layout
+- Login Page
+- Footer
+
+### Component Library
+Implemented reusable UI components:
+
+- Button
+- Input
+- Modal
+- Toast
+- Loader
+
+Additional:
+- Component Showcase Page
+- Centralized component exports (`index.js`)
+
+### User Experience
+- Responsive Testing
+  - Mobile (375px)
+  - Tablet (768px)
+  - Desktop (1440px)
+
+- Dark / Light Mode
+  - Theme persistence using localStorage
 
 ---
 
@@ -62,50 +94,74 @@ This repository currently contains the frontend skeleton developed as part of We
 frontend/
 │
 ├── src/
-│ ├── components/
-│ │ ├── Navbar.jsx
-│ │ ├── Hero.jsx
-│ │ ├── Card.jsx
-│ │ └── Footer.jsx
-│ │
-│ ├── pages/
-│ │ ├── Home.jsx
-│ │ ├── About.jsx
-│ │ ├── Dashboard.jsx
-│ │ └── Login.jsx
-│ │
-│ ├── App.jsx
-│ └── main.jsx
+│
+├── components/
+│ ├── Navbar.jsx
+│ ├── Hero.jsx
+│ ├── Footer.jsx
+│ └── ui/
+│     ├── Button.jsx
+│     ├── Input.jsx
+│     ├── Modal.jsx
+│     ├── Toast.jsx
+│     ├── Loader.jsx
+│     └── index.js
+│
+├── pages/
+│ ├── Home.jsx
+│ ├── About.jsx
+│ ├── Dashboard.jsx
+│ ├── Login.jsx
+│ └── ComponentsDemo.jsx
+│
+├── App.jsx
+└── main.jsx
 
 ---
 
 ## Installation
 
-Clone repository:
+Clone repository
 
+```bash
 git clone <repository-url>
+```
 
-Install dependencies:
+Install dependencies
 
+```bash
 npm install
+```
 
-Run project:
+Run locally
 
+```bash
 npm run dev
+```
+
+---
+
+## Roadmap
+
+- AI Recommendation Engine
+- Farm Dashboard
+- Real-time Insights
+- Scalable Architecture
+- Performance Optimization
+- Deployment
 
 ---
 
 ## Status
 
-🚧 Week 2 Deliverables Completed
-
-Frontend Skeleton Complete
+✅ Week 3 Completed  
+🚀 Frontend + UI System Ready  
+🔄 Backend Integration Planned
 
 ---
 
 ## Author
 
-Shivanshu
-TBI-GEU Summer Internship 2026
+Shivanshu  
+TBI-GEU Summer Internship 2026  
 AI Assisted Full Stack Web Development
-
