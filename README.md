@@ -159,7 +159,45 @@ npm run dev
 🔄 Backend Integration Planned
 
 ---
+## Backend Setup
 
+Navigate to backend folder:
+
+```bash
+cd backend
+```
+
+Create virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate virtual environment:
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run FastAPI server:
+
+```bash
+uvicorn main:app --reload
+```
+
+Open Swagger documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
 ## Author
 
 Shivanshu  
