@@ -1,205 +1,86 @@
-# KrishiSathi 🌾
+# Week 4 Progress Update — Backend & API Development
 
-AI-Powered Smart Crop Advisory Platform
+## Project
 
----
+**KrishiSathi — AI-Powered Smart Crop Advisory System**
 
-## Overview
+## Completed Work
 
-KrishiSathi is an AI-assisted full stack web application designed to help farmers make smarter agricultural decisions using intelligent recommendations and modern web technologies.
+### Backend Development
 
-The platform aims to improve agricultural productivity through crop guidance, weather-aware insights, and AI-driven assistance.
+* Created FastAPI backend application.
+* Configured virtual environment and project structure.
+* Implemented RESTful API architecture.
+* Added CORS configuration for frontend communication.
+* Added exception handling and validation support.
 
----
+### REST API Endpoints Implemented
 
-## Current Features
+1. `GET /farm/status`
+2. `POST /farm/analyze`
+3. `GET /farm`
+4. `GET /farm/{farm_id}`
+5. `PUT /farm/update/{farm_id}`
+6. `DELETE /farm/delete/{farm_id}`
+7. `GET /farm/search/{crop_name}`
 
-### Core UI Features
-- Responsive multi-page frontend
-- Dark / Light Mode (persistent)
-- Reusable UI Component Library
-- Mobile-first responsive layouts
-- Modern dashboard-oriented interface
+### API Features
 
-### Agricultural Features (Planned)
-- Crop Advisory Recommendations
-- Weather-aware Farming Insights
-- AI-based Decision Support
-- Farm Health Monitoring
-- Yield Prediction
-- Smart Agricultural Assistant
+* Correct HTTP methods implemented.
+* Proper HTTP status codes returned.
+* JSON request and response handling.
+* Input validation using Pydantic models.
+* Error handling for invalid requests and missing resources.
+* In-memory storage implementation for farm records.
 
----
+### API Testing
 
-## Tech Stack
+* Tested all endpoints using FastAPI Swagger UI.
+* Exported Postman collection with all API requests.
+* Verified successful responses and status codes.
 
-### Frontend
-- React JS
-- Vite
-- CSS
+### Frontend Integration
 
-### Routing
-- React Router DOM
+* Connected React frontend to FastAPI backend using Axios.
+* Replaced mock frontend data with live backend API calls.
+* Added loading states using Loader component.
+* Added success notifications using Toast component.
+* Configured frontend-backend communication successfully.
 
-### Backend (Planned)
-- FastAPI (Python)
+### Features Connected to Backend
 
-### Database (Planned)
-- MongoDB Atlas
+#### Farm Analysis Page
 
-### AI Integration (Planned)
-- Gemini API
+* Sends user input to backend API.
+* Receives AI analysis results.
+* Displays crop health score and recommendations.
 
----
+#### Dashboard Page
 
-## Week 3 Deliverables Completed
+* Fetches live farm data from backend.
+* Displays:
 
-### Design
-- Lo-fi Wireframes (Figma)
-- Multi-screen application planning
+  * Total Farms
+  * Average Health Score
+  * Average Temperature
+  * High Risk Farms
+* Shows detailed farm analysis cards.
 
-### UI Development
-- Responsive Navbar
-- Hero Section
-- Dashboard Layout
-- Login Page
-- Footer
+### UI Components Utilized
 
-### Component Library
-Implemented reusable UI components:
+* Loader Component
+* Toast Notification Component
+* Button Component
+* Input Component
+* Theme Toggle Component
 
-- Button
-- Input
-- Modal
-- Toast
-- Loader
+### Documentation Deliverables Completed
 
-Additional:
-- Component Showcase Page
-- Centralized component exports (`index.js`)
+* API Collection Export (`W4_APICollection_[26100910].json`)
+* Frontend-Backend Connection PDF (`W4_Frontendconnection_[26100910].pdf`)
+* Updated GitHub repository with frontend and backend code.
+* Updated README documentation.
 
-### User Experience
-- Responsive Testing
-  - Mobile (375px)
-  - Tablet (768px)
-  - Desktop (1440px)
+## Outcome
 
-- Dark / Light Mode
-  - Theme persistence using localStorage
-
----
-
-## Project Structure
-
-frontend/
-│
-├── src/
-│
-├── components/
-│ ├── Navbar.jsx
-│ ├── Hero.jsx
-│ ├── Footer.jsx
-│ └── ui/
-│     ├── Button.jsx
-│     ├── Input.jsx
-│     ├── Modal.jsx
-│     ├── Toast.jsx
-│     ├── Loader.jsx
-│     └── index.js
-│
-├── pages/
-│ ├── Home.jsx
-│ ├── About.jsx
-│ ├── Dashboard.jsx
-│ ├── Login.jsx
-│ └── ComponentsDemo.jsx
-│
-├── App.jsx
-└── main.jsx
-
----
-
-## Installation
-
-Clone repository
-
-```bash
-git clone <repository-url>
-```
-
-Install dependencies
-
-```bash
-npm install
-```
-
-Run locally
-
-```bash
-npm run dev
-```
-
----
-
-## Roadmap
-
-- AI Recommendation Engine
-- Farm Dashboard
-- Real-time Insights
-- Scalable Architecture
-- Performance Optimization
-- Deployment
-
----
-
-## Status
-
-✅ Week 3 Completed  
-🚀 Frontend + UI System Ready  
-🔄 Backend Integration Planned
-
----
-## Backend Setup
-
-Navigate to backend folder:
-
-```bash
-cd backend
-```
-
-Create virtual environment:
-
-```bash
-python -m venv venv
-```
-
-Activate virtual environment:
-
-### Windows
-
-```bash
-venv\Scripts\activate
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run FastAPI server:
-
-```bash
-uvicorn main:app --reload
-```
-
-Open Swagger documentation:
-
-```text
-http://127.0.0.1:8000/docs
-```
-## Author
-
-Shivanshu  
-TBI-GEU Summer Internship 2026  
-AI Assisted Full Stack Web Development
+Successfully transformed KrishiSathi from a static frontend application into a complete full-stack application with live backend communication and REST API integration.
