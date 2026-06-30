@@ -1,54 +1,44 @@
-import "./App.css"
-import { Routes, Route } from "react-router-dom"
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import Home from "./pages/Home"
-import About from "./pages/About"
-import Dashboard from "./pages/Dashboard"
-import Login from "./pages/Login"
-import ComponentsDemo from "./pages/ComponentsDemo"
-<Route
-path="/components"
-element={<ComponentsDemo/>}
-/>
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import ComponentsDemo from "./pages/ComponentsDemo";
+import FarmAnalysis from "./pages/FarmAnalysis";
 
 function App() {
-
   return (
     <>
       <Navbar />
 
       <Routes>
-
         <Route path="/" element={<Home />} />
 
-        <Route
-          path="/about"
-          element={<About />}
-        />
+        <Route path="/about" element={<About />} />
 
-        <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+        <Route path="/login" element={<Login />} />
 
         <Route
           path="/components"
           element={<ComponentsDemo />}
         />
 
+        <Route
+          path="/analysis"
+          element={<FarmAnalysis />}
+        />
       </Routes>
 
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

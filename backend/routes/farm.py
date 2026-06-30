@@ -2,42 +2,37 @@ from fastapi import APIRouter, HTTPException
 from models.schemas import FarmInput
 from services.advisory import generate_recommendation
 
-router = APIRouter()
+from database import farms_collection
+from bson import ObjectId
 
-farm_db=[]
+router = APIRouter()
 
 
 @router.get("/farm/status")
 def status():
 
     return {
-        "status":"running"
+        "status": "running"
     }
 
 
 @router.post("/farm/analyze")
 def analyze(data: FarmInput):
 
-    result=generate_recommendation(data)
+    result = generate_recommendation(data)
 
-    record={
-
-        "id":len(farm_db)+1,
-
-        "location":data.location,
-
-        "crop":data.crop,
-
-        "month":data.month,
-
-        "temperature":data.temperature,
-
-        "soil":data.soil_type,
-
+    record = {
+        "location": data.location,
+        "crop": data.crop,
+        "month": data.month,
+        "temperature": data.temperature,
+        "soil_type": data.soil_type,
         **result
     }
 
-    farm_db.append(record)
+    insert_result = farms_collection.insert_one(record)
+
+    record["_id"] = str(insert_result.inserted_id)
 
     return record
 
@@ -45,83 +40,106 @@ def analyze(data: FarmInput):
 @router.get("/farm")
 def get_all():
 
-    return farm_db
+    farms = list(farms_collection.find())
+
+    for farm in farms:
+        farm["_id"] = str(farm["_id"])
+
+    return farms
 
 
 @router.get("/farm/{farm_id}")
-def get_one(farm_id:int):
+def get_one(farm_id: str):
 
-    if farm_id>len(farm_db):
+    farm = farms_collection.find_one(
+        {"_id": ObjectId(farm_id)}
+    )
 
+    if not farm:
         raise HTTPException(
             status_code=404,
             detail="Farm not found"
         )
 
-    return farm_db[farm_id-1]
+    farm["_id"] = str(farm["_id"])
+
+    return farm
 
 
 @router.put("/farm/update/{farm_id}")
-def update(farm_id:int,data:FarmInput):
+def update(farm_id: str, data: FarmInput):
 
-    if farm_id>len(farm_db):
+    updated = generate_recommendation(data)
 
+    update_data = {
+        "location": data.location,
+        "crop": data.crop,
+        "month": data.month,
+        "temperature": data.temperature,
+        "soil_type": data.soil_type,
+        **updated
+    }
+
+    result = farms_collection.update_one(
+        {"_id": ObjectId(farm_id)},
+        {"$set": update_data}
+    )
+
+    if result.modified_count == 0:
         raise HTTPException(
             status_code=404,
             detail="Farm not found"
         )
 
-    updated=generate_recommendation(data)
+    farm = farms_collection.find_one(
+        {"_id": ObjectId(farm_id)}
+    )
 
-    farm_db[farm_id-1].update({
+    farm["_id"] = str(farm["_id"])
 
-        "crop":data.crop,
-
-        "temperature":data.temperature,
-
-        **updated
-
-    })
-
-    return farm_db[farm_id-1]
+    return farm
 
 
 @router.delete("/farm/delete/{farm_id}")
-def delete(farm_id:int):
+def delete(farm_id: str):
 
-    if farm_id>len(farm_db):
+    farm = farms_collection.find_one(
+        {"_id": ObjectId(farm_id)}
+    )
 
+    if not farm:
         raise HTTPException(
             status_code=404,
             detail="Farm not found"
         )
 
-    removed=farm_db.pop(farm_id-1)
+    farms_collection.delete_one(
+        {"_id": ObjectId(farm_id)}
+    )
+
+    farm["_id"] = str(farm["_id"])
 
     return {
-
-        "deleted":True,
-
-        "data":removed
-
+        "deleted": True,
+        "data": farm
     }
 
 
 @router.get("/farm/search/")
-def search(crop:str):
+def search(crop: str):
 
-    result=[
+    result = list(
+        farms_collection.find(
+            {
+                "crop": {
+                    "$regex": crop,
+                    "$options": "i"
+                }
+            }
+        )
+    )
 
-        x
-
-        for x in farm_db
-
-        if crop.lower()
-
-        in
-
-        x["crop"].lower()
-
-    ]
+    for farm in result:
+        farm["_id"] = str(farm["_id"])
 
     return result

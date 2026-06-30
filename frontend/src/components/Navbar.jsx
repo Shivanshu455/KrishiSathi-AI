@@ -89,6 +89,15 @@ function Navbar() {
         >
 Components
 </Link>
+        <Link
+          to="/analysis"
+          style={{
+            color: "white",
+            textDecoration: "none"
+          }}
+        >
+          Farm Analysis
+        </Link>
 
 
         {/* Week 3 Dark Light Toggle */}
