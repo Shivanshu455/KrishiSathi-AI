@@ -225,14 +225,33 @@ function FarmAnalysis() {
           </p>
 
           <p>
-            💡 <strong>Recommendation:</strong>
-            {" "}
-            {result.recommendation}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
+    🏪 <strong>Best Market Price:</strong>
+    ₹{result.market_price}/quintal
+  </p>
 
-export default FarmAnalysis;
+  <p>
+    📍 <strong>Recommended Market:</strong>
+    {result.recommended_market}
+  </p>
+
+  <p>
+    💰 <strong>Expected Profit:</strong>
+    ₹{result.expected_profit}
+  </p>
+
+  <p>
+    🚚 <strong>Travel Time:</strong>
+    {result.travel_time} hours
+  </p>
+
+  <p>
+    ⛽ <strong>Fuel Cost:</strong>
+    ₹{result.fuel_cost}
+  </p>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  export default FarmAnalysis;

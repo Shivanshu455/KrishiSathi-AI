@@ -80,15 +80,7 @@ function Navbar() {
           Login
         </Link>
 
-        <Link
-          to="/components"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-Components
-</Link>
+       
         <Link
           to="/analysis"
           style={{

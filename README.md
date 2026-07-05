@@ -1,167 +1,342 @@
-# KrishiSathi 🌾
+# 🌾 KrishiSathi AI
 
-AI-Powered Smart Crop Advisory Platform
+An AI-Powered Smart Agriculture Decision Support Platform designed to help farmers make better farming decisions using crop intelligence, market analysis, weather insights, and AI-driven recommendations.
+
+---
+
+# 📌 Project Overview
+
+Agriculture faces several challenges including unpredictable weather conditions, fluctuating market prices, inefficient crop selection, and lack of data-driven decision making.
+
+KrishiSathi aims to address these challenges by providing:
+
+- Crop Health Analysis
+- AI-based Recommendations
+- Market Intelligence
+- Weather Insights
+- Profit Estimation
+- Agricultural Analytics Dashboard
+
+The system combines Full Stack Development with Artificial Intelligence to build an intelligent farming assistant.
 
 ---
 
-## Overview
-
-KrishiSathi is an AI-assisted full stack web application designed to help farmers make smarter agricultural decisions using intelligent recommendations and modern web technologies.
-
-The platform aims to improve agricultural productivity through crop guidance, weather-aware insights, and AI-driven assistance.
-
----
+# 🚀 Features
 
 ## Current Features
 
-### Core UI Features
-- Responsive multi-page frontend
-- Dark / Light Mode (persistent)
-- Reusable UI Component Library
-- Mobile-first responsive layouts
-- Modern dashboard-oriented interface
+### 🌱 Farm Analysis
+- Crop selection analysis
+- Temperature-based health assessment
+- Soil suitability analysis
+- Season compatibility analysis
 
-### Agricultural Features (Planned)
-- Crop Advisory Recommendations
-- Weather-aware Farming Insights
-- AI-based Decision Support
-- Farm Health Monitoring
-- Yield Prediction
-- Smart Agricultural Assistant
+### 🤖 AI Recommendation Engine
+- Crop health score generation
+- Confidence score generation
+- Intelligent recommendations
+- Analysis factor generation
+
+### 📊 Analytics Dashboard
+- Total Farms Monitoring
+- Healthy Farm Detection
+- High Risk Farm Identification
+- Average Temperature Tracking
+- Average Health Monitoring
+- Profit Analytics
+- Health Trend Visualization
+- Profit Trend Visualization
+
+### 💰 Market Intelligence
+- Market price estimation
+- Recommended market selection
+- Expected profit calculation
+- Travel cost estimation
+- Fuel cost estimation
+
+### 🌦 Weather Intelligence
+- Temperature monitoring
+- Humidity monitoring
+- Wind speed monitoring
+- Environmental condition analysis
+
+### ☁ Cloud Database
+- MongoDB Atlas integration
+- Persistent storage
+- Real-time retrieval
+- Cloud-hosted data management
 
 ---
 
-## Tech Stack
+# 🛠 Technology Stack
 
-### Frontend
-- React JS
+## Frontend
+- React.js
 - Vite
-- CSS
-
-### Routing
 - React Router DOM
+- Recharts
 
-### Backend (Planned)
-- FastAPI (Python)
+## Backend
+- FastAPI
+- Pydantic
+- Uvicorn
 
-### Database (Planned)
+## Database
 - MongoDB Atlas
+- PyMongo
 
-### AI Integration (Planned)
-- Gemini API
+## Development Tools
+- Postman
+- Git
+- GitHub
+- VS Code
 
----
-
-## Week 3 Deliverables Completed
-
-### Design
-- Lo-fi Wireframes (Figma)
-- Multi-screen application planning
-
-### UI Development
-- Responsive Navbar
-- Hero Section
-- Dashboard Layout
-- Login Page
-- Footer
-
-### Component Library
-Implemented reusable UI components:
-
-- Button
-- Input
-- Modal
-- Toast
-- Loader
-
-Additional:
-- Component Showcase Page
-- Centralized component exports (`index.js`)
-
-### User Experience
-- Responsive Testing
-  - Mobile (375px)
-  - Tablet (768px)
-  - Desktop (1440px)
-
-- Dark / Light Mode
-  - Theme persistence using localStorage
+## AI Technologies
+- Rule-Based Recommendation Engine
+- Gemini AI Integration (Planned)
 
 ---
 
-## Project Structure
+# 🏗 System Architecture
 
-frontend/
-│
-├── src/
-│
-├── components/
-│ ├── Navbar.jsx
-│ ├── Hero.jsx
-│ ├── Footer.jsx
-│ └── ui/
-│     ├── Button.jsx
-│     ├── Input.jsx
-│     ├── Modal.jsx
-│     ├── Toast.jsx
-│     ├── Loader.jsx
-│     └── index.js
-│
-├── pages/
-│ ├── Home.jsx
-│ ├── About.jsx
-│ ├── Dashboard.jsx
-│ ├── Login.jsx
-│ └── ComponentsDemo.jsx
-│
-├── App.jsx
-└── main.jsx
-
----
-
-## Installation
-
-Clone repository
-
-```bash
-git clone <repository-url>
+```text
+User Input
+    ↓
+React Frontend
+    ↓
+FastAPI REST API
+    ↓
+AI Recommendation Engine
+    ↓
+MongoDB Atlas
+    ↓
+Dashboard Analytics
 ```
 
-Install dependencies
+---
+
+# 🗄 Database Choice
+
+KrishiSathi uses MongoDB Atlas as its primary database.
+
+MongoDB was selected because agricultural datasets are semi-structured and continuously evolving. New features such as weather intelligence, disease prediction, satellite imagery analysis, and AI-generated insights can be added without requiring rigid schema migrations.
+
+The document-oriented architecture of MongoDB provides flexibility and scalability for future enhancements.
+
+---
+
+# 📂 Database Schema
+
+## Farm Collection Fields
+
+| Field | Type |
+|-------|------|
+| _id | ObjectId |
+| location | String |
+| crop | String |
+| month | String |
+| temperature | Float |
+| soil_type | String |
+| health_score | Integer |
+| confidence | Integer |
+| recommendation | String |
+| analysis_factors | Array |
+| best_market | String |
+| market_price | Integer |
+| recommended_market | String |
+| expected_profit | Integer |
+| travel_time | Float |
+| fuel_cost | Integer |
+| created_at | DateTime |
+
+---
+
+## Schema Diagram
+
+![Schema Diagram](./docs/schema_diagram.png)
+
+---
+
+# 🔌 API Endpoints
+
+## Farm APIs
+
+### Create Farm Analysis
+```http
+POST /farm/analyze
+```
+
+### Get All Farms
+```http
+GET /farm
+```
+
+### Get Single Farm
+```http
+GET /farm/{farm_id}
+```
+
+### Update Farm
+```http
+PUT /farm/update/{farm_id}
+```
+
+### Delete Farm
+```http
+DELETE /farm/delete/{farm_id}
+```
+
+### Search Farms
+```http
+GET /farm/search?crop=wheat
+```
+
+---
+
+# ⚙ Installation
+
+## Clone Repository
 
 ```bash
+git clone https://github.com/Shivanshu455/KrishiSathi-AI/tree/main
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+```
+
+Create:
+
+```text
+.env
+```
+
+Add:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run backend:
+
+```bash
+uvicorn main:app --reload
+```
+
+Backend URL:
+
+```text
+http://127.0.0.1:8000
+```
+
+Swagger Documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
 npm install
-```
-
-Run locally
-
-```bash
 npm run dev
 ```
 
----
+Frontend URL:
 
-## Roadmap
-
-- AI Recommendation Engine
-- Farm Dashboard
-- Real-time Insights
-- Scalable Architecture
-- Performance Optimization
-- Deployment
+```text
+http://localhost:5173
+```
 
 ---
 
-## Status
+# 🔐 Environment Variables
 
-✅ Week 3 Completed  
-🚀 Frontend + UI System Ready  
-🔄 Backend Integration Planned
+Create:
+
+```text
+backend/.env
+```
+
+Required variables:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+Example file:
+
+```text
+backend/.env.example
+```
+
+```env
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/krishisathi
+GEMINI_API_KEY=your_api_key_here
+```
 
 ---
 
-## Author
+# 📈 Week 5 Deliverables
 
-Shivanshu  
-TBI-GEU Summer Internship 2026  
-AI Assisted Full Stack Web Development
+Completed deliverables:
+
+- MongoDB Atlas Integration
+- Persistent Cloud Storage
+- Full CRUD Operations
+- Schema Design
+- CRUD Verification
+- Dashboard Analytics
+- Environment Variable Configuration
+- Database Documentation
+
+---
+
+# 🔮 Future Roadmap
+
+## Week 6
+- Gemini AI Integration
+- Explainable AI Responses
+
+## Week 7
+- Historical Trend Analytics
+- Smart Alert System
+
+## Week 8
+- User Authentication
+- Personalized Dashboards
+
+## Week 9
+- Interactive Farm Map
+- Deployment and Cloud Hosting
+
+---
+
+# 👨‍💻 Author
+
+**Shivanshu**
+
+AI Assisted Full Stack Development Internship Project
+
+Graphic Era University TBI Summer Internship Program 2026
+
+---
+
+# 📄 License
+
+This project is developed for academic and internship purposes.
