@@ -1,7 +1,19 @@
-import { Link } from "react-router-dom"
-import ThemeToggle from "./ThemeToggle"
+import { Link, useNavigate } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
+  const isLoggedIn = !!localStorage.getItem("token");
+
+  const logout = () => {
+
+    localStorage.removeItem("token");
+
+    navigate("/login");
+
+  };
 
   return (
 
@@ -26,7 +38,6 @@ function Navbar() {
         KrishiSathi 🌾
       </h1>
 
-
       {/* Navigation */}
 
       <div
@@ -47,7 +58,6 @@ function Navbar() {
           Home
         </Link>
 
-
         <Link
           to="/about"
           style={{
@@ -58,41 +68,68 @@ function Navbar() {
           About
         </Link>
 
+        {isLoggedIn && (
+          <>
+            <Link
+              to="/dashboard"
+              style={{
+                color: "white",
+                textDecoration: "none"
+              }}
+            >
+              Dashboard
+            </Link>
 
-        <Link
-          to="/dashboard"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Dashboard
-        </Link>
+            <Link
+              to="/analysis"
+              style={{
+                color: "white",
+                textDecoration: "none"
+              }}
+            >
+              Farm Analysis
+            </Link>
+          </>
+        )}
 
+        {!isLoggedIn ? (
+          <>
+            <Link
+              to="/login"
+              style={{
+                color: "white",
+                textDecoration: "none"
+              }}
+            >
+              Login
+            </Link>
 
-        <Link
-          to="/login"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Login
-        </Link>
-
-       
-        <Link
-          to="/analysis"
-          style={{
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Farm Analysis
-        </Link>
-
-
-        {/* Week 3 Dark Light Toggle */}
+            <Link
+              to="/register"
+              style={{
+                color: "white",
+                textDecoration: "none"
+              }}
+            >
+              Register
+            </Link>
+          </>
+        ) : (
+          <button
+            onClick={logout}
+            style={{
+              background: "#ffffff",
+              color: "#008C3A",
+              border: "none",
+              padding: "8px 18px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontWeight: "bold"
+            }}
+          >
+            Logout
+          </button>
+        )}
 
         <ThemeToggle />
 
@@ -100,7 +137,8 @@ function Navbar() {
 
     </nav>
 
-  )
+  );
+
 }
 
-export default Navbar
+export default Navbar;

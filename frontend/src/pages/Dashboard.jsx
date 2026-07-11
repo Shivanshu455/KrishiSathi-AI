@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllFarms } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 import StatCard from "../components/dashboard/StatCard";
 import HealthChart from "../components/dashboard/HealthChart";
@@ -10,6 +11,18 @@ import AIInsights from "../components/dashboard/AIInsights";
 import RecentAnalysis from "../components/dashboard/RecentAnalysis";
 import ProfitTrendChart from "../components/dashboard/ProfitTrendChart";
 function Dashboard() {
+  
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+    }
+
+  }, [navigate]);
 
   const [farms, setFarms] = useState([]);
 

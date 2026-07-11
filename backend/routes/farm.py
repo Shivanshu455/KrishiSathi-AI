@@ -8,6 +8,8 @@ from bson import ObjectId
 from services.geocoding_service import get_coordinates
 from services.weather_service import get_weather
 from datetime import datetime
+from auth.dependencies import get_current_user
+from fastapi import Depends
 
 router = APIRouter()
 
@@ -20,7 +22,10 @@ def status():
 
 
 @router.post("/farm/analyze")
-def analyze(data: FarmInput):
+def analyze(
+    data: FarmInput,
+    current_user: dict = Depends(get_current_user)
+):
 
     # Step 1: Convert location to coordinates
     coords = get_coordinates(data.location)
@@ -40,12 +45,16 @@ def analyze(data: FarmInput):
 
     # Step 4: Generate AI recommendation
     result = generate_recommendation(data)
-    from services.gemini_service import (
-        generate_ai_advice
-)
- 
-    ai_message = result["recommendation"]
+    from services.gemini_service import generate_ai_advice
 
+    try:
+        ai_message = generate_ai_advice(
+            data,
+            result
+        )
+    except Exception:
+        ai_message = result["recommendation"]
+        
 
 
     # Step 5: Store everything in MongoDB
@@ -72,7 +81,7 @@ def analyze(data: FarmInput):
 
 
 @router.get("/farm")
-def get_all():
+def get_all(current_user: dict = Depends(get_current_user)):
 
     farms = list(farms_collection.find())
 
@@ -83,7 +92,10 @@ def get_all():
 
 
 @router.get("/farm/{farm_id}")
-def get_one(farm_id: str):
+def get_one(
+    farm_id: str,
+    current_user: dict = Depends(get_current_user)
+):
 
     try:
         farm = farms_collection.find_one(
@@ -107,7 +119,11 @@ def get_one(farm_id: str):
 
 
 @router.put("/farm/update/{farm_id}")
-def update(farm_id: str, data: FarmInput):
+def update(
+    farm_id: str,
+    data: FarmInput,
+    current_user: dict = Depends(get_current_user)
+):
 
     updated = generate_recommendation(data)
 
@@ -141,7 +157,10 @@ def update(farm_id: str, data: FarmInput):
 
 
 @router.delete("/farm/delete/{farm_id}")
-def delete(farm_id: str):
+def delete(
+    farm_id: str,
+    current_user: dict = Depends(get_current_user)
+):
 
     farm = farms_collection.find_one(
         {"_id": ObjectId(farm_id)}
@@ -166,7 +185,10 @@ def delete(farm_id: str):
 
 
 @router.get("/farm/search/")
-def search(crop: str):
+def search(
+    crop: str,
+    current_user: dict = Depends(get_current_user)
+):
 
     result = list(
         farms_collection.find(

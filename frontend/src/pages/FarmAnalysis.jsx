@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFarm } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 import Loader from "../components/ui/Loader";
 import Toast from "../components/ui/Toast";
 
 function FarmAnalysis() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const [formData, setFormData] = useState({
     location: "",
     crop: "",

@@ -57,8 +57,6 @@ def generate_recommendation(data):
 
     # Recommendation Generation
 
-    # Recommendation Generation
-
     if health_score >= 85:
         recommendation = (
             "Conditions are favorable for crop growth."

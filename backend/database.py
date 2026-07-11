@@ -11,6 +11,7 @@ client = MongoClient(MONGO_URI)
 db = client["krishisathi"]
 
 farms_collection = db["farms"]
+users_collection = db["users"]
 
 try:
     client.admin.command("ping")
