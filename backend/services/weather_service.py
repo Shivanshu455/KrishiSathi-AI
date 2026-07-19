@@ -1,25 +1,32 @@
+import os
 import requests
 
+BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
-def get_weather(latitude, longitude):
 
-    url = (
-        f"https://api.open-meteo.com/v1/forecast"
-        f"?latitude={latitude}"
-        f"&longitude={longitude}"
-        f"&current=temperature_2m,"
-        f"relative_humidity_2m,"
-        f"wind_speed_10m"
-    )
+def get_weather(city: str):
 
-    response = requests.get(url)
+    api_key = os.getenv("OPENWEATHER_API_KEY")
+
+    if not api_key:
+        raise Exception("OPENWEATHER_API_KEY not found")
+
+    params = {
+        "q": city,
+        "appid": api_key,
+        "units": "metric"
+    }
+
+    response = requests.get(BASE_URL, params=params)
+
+    response.raise_for_status()
 
     data = response.json()
 
-    current = data["current"]
-
     return {
-        "temperature": current["temperature_2m"],
-        "humidity": current["relative_humidity_2m"],
-        "wind_speed": current["wind_speed_10m"]
+        "temperature": data["main"]["temp"],
+        "humidity": data["main"]["humidity"],
+        "description": data["weather"][0]["description"],
+        "wind_speed": data["wind"]["speed"],
+        "city": data["name"]
     }

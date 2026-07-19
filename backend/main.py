@@ -9,6 +9,18 @@ from rate_limiter import limiter
 from routes.farm import router as farm_router
 from routes.auth import router as auth_router
 
+from routes.crop_recommendation import (
+    router as crop_router
+)
+from routes.cultivation_plan import router as cultivation_router
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from routes.weather import router as weather_router
+from routes.profit import router as profit_router
+
 app = FastAPI(
     title="KrishiSathi API"
 )
@@ -39,7 +51,10 @@ app.add_middleware(
 # ----------------------------
 app.include_router(farm_router)
 app.include_router(auth_router)
-
+app.include_router(crop_router)
+app.include_router(cultivation_router)
+app.include_router(weather_router)
+app.include_router(profit_router)
 # ----------------------------
 # Root Endpoint
 # ----------------------------

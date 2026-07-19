@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Wheat",
+    "category": "Cereal",
+    "season": ["Rabi"],
+    "districts": [
+      "Dehradun",
+      "Haridwar",
+      "Udham Singh Nagar"
+    ],
+    "soil_types": [
+      "Loamy",
+      "Clay Loam"
+    ],
+    "temperature": {
+      "min": 15,
+      "max": 25
+    },
+    "water_requirement": "Medium",
+    "irrigation": [
+      "Canal",
+      "Tube Well"
+    ],
+    "investment": "Medium",
+    "risk": "Low",
+    "duration_days": 120,
+    "market_demand": "High",
+    "profit_level": "Medium",
+    "difficulty": "Easy",
+
+    "estimated_cost": 42000,
+    "expected_yield": 3.8,
+    "market_price": 23000,
+    "recommended_area": "1-5 Acres"
+  },
+
+  {
+    "id": 2,
+    "name": "Rice",
+    "category": "Cereal",
+    "season": ["Kharif"],
+    "districts": [
+      "Haridwar",
+      "Udham Singh Nagar"
+    ],
+    "soil_types": [
+      "Clay",
+      "Clay Loam"
+    ],
+    "temperature": {
+      "min": 22,
+      "max": 35
+    },
+    "water_requirement": "High",
+    "irrigation": [
+      "Canal",
+      "Tube Well"
+    ],
+    "investment": "High",
+    "risk": "Medium",
+    "duration_days": 135,
+    "market_demand": "High",
+    "profit_level": "High",
+    "difficulty": "Medium",
+
+    "estimated_cost": 55000,
+    "expected_yield": 4.5,
+    "market_price": 22000,
+    "recommended_area": "2-10 Acres"
+  },
+
+  {
+    "id": 3,
+    "name": "Potato",
+    "category": "Vegetable",
+    "season": ["Rabi"],
+    "districts": [
+      "Chamoli",
+      "Rudraprayag",
+      "Uttarkashi",
+      "Pithoragarh"
+    ],
+    "soil_types": [
+      "Loamy",
+      "Sandy Loam"
+    ],
+    "temperature": {
+      "min": 15,
+      "max": 22
+    },
+    "water_requirement": "Medium",
+    "irrigation": [
+      "Rain-fed",
+      "Sprinkler",
+      "Drip"
+    ],
+    "investment": "Medium",
+    "risk": "Low",
+    "duration_days": 100,
+    "market_demand": "High",
+    "profit_level": "High",
+    "difficulty": "Easy",
+
+    "estimated_cost": 70000,
+    "expected_yield": 18,
+    "market_price": 12000,
+    "recommended_area": "1-3 Acres"
+  }
+]

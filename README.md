@@ -23,48 +23,93 @@ The system combines Full Stack Development with Artificial Intelligence to build
 
 # 🚀 Features
 
-## Current Features
+## 🔐 Authentication
 
-### 🌱 Farm Analysis
-- Crop selection analysis
-- Temperature-based health assessment
-- Soil suitability analysis
-- Season compatibility analysis
+- User Registration
+- User Login
+- JWT Authentication
+- Google OAuth Login
+- Protected Routes
 
-### 🤖 AI Recommendation Engine
-- Crop health score generation
-- Confidence score generation
-- Intelligent recommendations
-- Analysis factor generation
+---
 
-### 📊 Analytics Dashboard
-- Total Farms Monitoring
-- Healthy Farm Detection
-- High Risk Farm Identification
-- Average Temperature Tracking
-- Average Health Monitoring
-- Profit Analytics
-- Health Trend Visualization
-- Profit Trend Visualization
+## 🌱 AI Crop Recommendation
 
-### 💰 Market Intelligence
-- Market price estimation
-- Recommended market selection
-- Expected profit calculation
-- Travel cost estimation
-- Fuel cost estimation
+- AI-powered crop recommendation
+- Crop suitability scoring
+- Weather-aware recommendations
+- Soil compatibility analysis
+- Budget-aware suggestions
 
-### 🌦 Weather Intelligence
-- Temperature monitoring
-- Humidity monitoring
-- Wind speed monitoring
-- Environmental condition analysis
+---
 
-### ☁ Cloud Database
-- MongoDB Atlas integration
-- Persistent storage
-- Real-time retrieval
-- Cloud-hosted data management
+## 🌦 Weather Intelligence
+
+- Real-time weather information
+- Temperature
+- Humidity
+- Wind Speed
+- Weather Conditions
+
+---
+
+## 🌾 AI Cultivation Planner
+
+Generate a complete cultivation roadmap including:
+
+- Land Preparation
+- Seed Selection
+- Irrigation Schedule
+- Fertilizer Planning
+- Pest Management
+- Harvesting Guide
+- Storage Tips
+
+Powered by Google Gemini 2.5 Flash.
+
+---
+
+## 📈 Profit Simulator
+
+Compare multiple recommended crops based on:
+
+- Investment
+- Revenue
+- Profit
+- ROI
+- Market Demand
+- Financial Risk
+
+---
+
+## 🤖 AI Business Advisor
+
+Uses Gemini AI to analyze:
+
+- Highest Profit Crop
+- Best ROI
+- Lowest Risk
+- Budget Friendly Crop
+- Final Recommendation
+
+---
+
+## 📊 Farm Management
+
+- Farm Analysis
+- Save Farm Records
+- Search Farms
+- Update Farms
+- Delete Farms
+- Dashboard Analytics
+
+---
+
+## ☁ Cloud Storage
+
+- MongoDB Atlas
+- Persistent Storage
+- Cloud Database
 
 ---
 
@@ -92,8 +137,11 @@ The system combines Full Stack Development with Artificial Intelligence to build
 - VS Code
 
 ## AI Technologies
+- Google Gemini 2.5 Flash
+- Prompt Engineering
 - Rule-Based Recommendation Engine
-- Gemini AI Integration (Planned)
+- AI Business Advisor
+- AI Cultivation Planner
 
 ---
 
@@ -190,7 +238,21 @@ DELETE /farm/delete/{farm_id}
 ```http
 GET /farm/search?crop=wheat
 ```
+## Authentication APIs
 
+POST /auth/register
+POST /auth/login
+POST /auth/google
+GET /auth/me
+
+## AI APIs
+
+POST /recommend-crops
+POST /generate-cultivation-plan
+POST /profit-simulation
+
+## Weather API
+GET /weather/{city}
 ---
 
 # ⚙ Installation
@@ -307,23 +369,30 @@ Completed deliverables:
 
 ---
 
-# 🔮 Future Roadmap
+# 🚀 Future Enhancements
 
-## Week 6
-- Gemini AI Integration
-- Explainable AI Responses
-
-## Week 7
-- Historical Trend Analytics
-- Smart Alert System
-
-## Week 8
-- User Authentication
-- Personalized Dashboards
-
-## Week 9
+- Disease Detection using Computer Vision
+- AI Farm Digital Twin
+- Seasonal Crop Prediction
+- Market Price Forecasting
+- Satellite Image Analysis
+- Smart Irrigation Recommendation
+- AI Chat Assistant
+- PDF Report Generation
+- Mobile Application
 - Interactive Farm Map
 - Deployment and Cloud Hosting
+
+# 📷 Screenshots
+Coming Soon
+
+- Login Page
+- Dashboard
+- Crop Recommendation
+- Weather Analysis
+- AI Cultivation Plan
+- Profit Comparison
+- AI Business Advisor
 
 ---
 

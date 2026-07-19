@@ -77,3 +77,77 @@ export const createFarm = async (farmData) => {
 
   return response.json();
 };
+
+export const recommendCrops = async (plannerData) => {
+
+    const response = await fetch(
+
+        `${API_BASE_URL}/recommend-crops`,
+
+        {
+
+            method: "POST",
+
+            headers: {
+
+                "Content-Type": "application/json"
+
+            },
+
+            body: JSON.stringify(plannerData)
+
+        }
+
+    );
+
+    return response.json();
+
+};
+
+export const generateCultivationPlan = async (data) => {
+
+    const response = await fetch(
+        `${API_BASE_URL}/generate-cultivation-plan`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+    );
+
+    return response.json();
+};
+
+export const getWeather = async (city) => {
+
+    const response = await fetch(
+        `${API_BASE_URL}/weather/${encodeURIComponent(city)}`
+    );
+
+    if (!response.ok) {
+        throw new Error("Unable to fetch weather.");
+    }
+
+    return response.json();
+};
+
+export const simulateProfit = async (cropNames) => {
+
+    const response = await fetch(
+        `${API_BASE_URL}/profit-simulation`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                crops: cropNames
+            })
+        }
+    );
+
+    return response.json();
+
+};

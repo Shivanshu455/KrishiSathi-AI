@@ -34,10 +34,7 @@ def analyze(
 
     # Step 2: Fetch real weather
     if coords:
-        weather = get_weather(
-            coords["latitude"],
-            coords["longitude"]
-        )
+        weather = get_weather(data.location)
 
     # Step 3: Override manual temperature
     if weather:
@@ -50,9 +47,11 @@ def analyze(
     try:
         ai_message = generate_ai_advice(
             data,
-            result
+            result,
+            weather
         )
-    except Exception:
+    except Exception as e:
+        print("Gemini Error:", e)
         ai_message = result["recommendation"]
         
 
@@ -66,7 +65,13 @@ def analyze(
         "humidity": weather["humidity"] if weather else None,
         "wind_speed": weather["wind_speed"] if weather else None,
         "soil_type": data.soil_type,
-        "ai_advice": ai_message,
+
+        "overall_health": ai_message["overall_health"],
+        "risk_level": ai_message["risk_level"],
+        "irrigation": ai_message["irrigation"],
+        "fertilizer": ai_message["fertilizer"],
+        "pest_control": ai_message["pest_control"],
+        "summary": ai_message["summary"],
 
         "created_at": datetime.utcnow(),
         

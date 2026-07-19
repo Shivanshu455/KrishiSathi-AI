@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ComponentsDemo from "./pages/ComponentsDemo";
 import FarmAnalysis from "./pages/FarmAnalysis";
+import CropPlanner from "./pages/CropPlanner";
 
 function App() {
   return (
@@ -37,6 +38,10 @@ function App() {
           path="/analysis"
           element={<FarmAnalysis />}
         />
+        <Route
+          path="/crop-planner"
+          element={<CropPlanner />}
+        />  
       </Routes>
 
       <Footer />
