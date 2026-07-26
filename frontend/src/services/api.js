@@ -151,3 +151,27 @@ export const simulateProfit = async (cropNames) => {
     return response.json();
 
 };
+
+export const updateFarm = async (id, farmData) => {
+  const response = await fetch(`${API_BASE_URL}/farm/update/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: JSON.stringify(farmData),
+  });
+
+  return response.json();
+};
+
+export const deleteFarm = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/farm/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+
+  return response.json();
+}
