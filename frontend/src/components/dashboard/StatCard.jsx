@@ -1,48 +1,72 @@
+import { ArrowUpRight } from "lucide-react";
+
 function StatCard({
+  icon,
   title,
   value,
-  icon,
-  color
+  trend,
+  color = "from-green-500 to-green-600",
 }) {
-
   return (
     <div
-      style={{
-        background: "white",
-        padding: "30px",
-        borderRadius: "20px",
-        boxShadow:
-          "0 4px 20px rgba(0,0,0,0.08)",
-        minWidth: "220px",
-        flex: 1
-      }}
+      className="
+      group
+      bg-white/80
+      backdrop-blur-xl
+      rounded-3xl
+      border
+      border-green-100
+      p-6
+      shadow-lg
+      hover:shadow-2xl
+      hover:-translate-y-2
+      transition-all
+      duration-300
+      cursor-pointer
+    "
     >
-      <div
-        style={{
-          fontSize: "40px",
-          marginBottom: "15px"
-        }}
-      >
-        {icon}
+      <div className="flex items-start justify-between">
+
+        <div
+          className={`
+            h-14
+            w-14
+            rounded-2xl
+            bg-gradient-to-br
+            ${color}
+            flex
+            items-center
+            justify-center
+            text-3xl
+            shadow-lg
+          `}
+        >
+          {icon}
+        </div>
+
+        <ArrowUpRight
+          size={20}
+          className="
+            text-gray-300
+            group-hover:text-green-600
+            transition
+          "
+        />
       </div>
 
-      <h3
-        style={{
-          color: "#666",
-          marginBottom: "10px"
-        }}
-      >
+      <h3 className="mt-6 text-gray-500 font-medium">
         {title}
       </h3>
 
-      <h1
-        style={{
-          color: color,
-          fontSize: "38px"
-        }}
-      >
+      <p className="mt-2 text-4xl font-bold text-gray-900">
         {value}
-      </h1>
+      </p>
+
+      <div className="mt-4">
+        <span className="inline-flex px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold">
+          {trend}
+        </span>
+      </div>
     </div>
   );
 }

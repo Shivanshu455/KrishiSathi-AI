@@ -1,65 +1,38 @@
+import PageWrapper from "../components/layout/PageWrapper";
+
+import Hero from "../components/home/Hero";
+import Stats from "../components/home/Stats";
+import Features from "../components/home/Features";
+import HowItWorks from "../components/home/HowItWorks";
+import WhyChooseUs from "../components/home/WhyChooseUs";
+import Testimonials from "../components/home/Testimonials";
+import CTA from "../components/home/CTA";
+
 function Home() {
   return (
+    <PageWrapper>
+      {/* Hero Section */}
+      <Hero />
 
-    <main>
+      {/* Statistics */}
+      <Stats />
 
-      <section className="hero">
+      {/* AI Powered Features */}
+      <Features />
 
-        <h1>
-          Smart Farming Starts Here
-        </h1>
+      {/* How KrishiSathi Works */}
+      <HowItWorks />
 
-        <p>
-          AI-powered crop advisory for better farming decisions
-        </p>
+      {/* Why Choose KrishiSathi */}
+      <WhyChooseUs />
 
-        <button>
-          Get Started
-        </button>
+      {/* Testimonials */}
+      <Testimonials /> 
 
-      </section>
-
-
-      <section className="cards">
-
-        <div className="card">
-
-          <h2>
-            Crop Advisory
-          </h2>
-
-          <p>
-            Get AI-powered recommendations for crop planning.
-          </p>
-
-          <button>
-            Explore
-          </button>
-
-        </div>
-
-
-        <div className="card">
-
-          <h2>
-            Weather Insights
-          </h2>
-
-          <p>
-            Receive weather-aware farming suggestions.
-          </p>
-
-          <button>
-            Explore
-          </button>
-
-        </div>
-
-      </section>
-
-    </main>
-
-  )
+      {/* Call To Action */}
+      <CTA />
+    </PageWrapper>
+  );
 }
 
-export default Home
+export default Home;

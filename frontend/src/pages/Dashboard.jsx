@@ -13,6 +13,7 @@ import WeatherWidget from "../components/dashboard/WeatherWidget";
 import AIInsights from "../components/dashboard/AIInsights";
 import ProfitTrendChart from "../components/dashboard/ProfitTrendChart";
 import FarmCard from "../components/dashboard/FarmCard";
+import StatCard from "../components/dashboard/StatCard";
 import Toast from "../components/ui/Toast";
 import Loader from "../components/ui/Loader"; 
 
@@ -58,7 +59,6 @@ function Dashboard() {
     }, 3000);
   };
 
-  // ✅ Fix applied: useEffect moved ABOVE the early return
   useEffect(() => {
     const fetchFarms = async () => {
       try {
@@ -74,7 +74,6 @@ function Dashboard() {
     fetchFarms();
   }, []);
 
-  // ✅ Early return safely happens AFTER all hooks are declared
   if (loading) {
     return (
       <div
@@ -232,89 +231,152 @@ function Dashboard() {
         </p>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit,minmax(220px,1fr))",
-          gap: "20px",
-          marginBottom: "40px",
-        }}
-      >
+      <div className="mb-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {kpiData.map((kpi, index) => (
-          <div
+          <StatCard
             key={index}
-            style={{
-              background: "#fff",
-              padding: "28px",
-              borderRadius: "18px",
-              boxShadow: "0 10px 30px rgba(0,0,0,.08)",
-              transition: "all .3s ease",
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-6px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
-          >
-            <div style={{ fontSize: "42px", marginBottom: "15px" }}>
-              {kpi.icon}
-            </div>
-            
-            <div
-              style={{
-                fontSize: "42px",
-                fontWeight: "800",
-                color: kpi.color,
-                lineHeight: "1.2",
-              }}
-            >
-              {kpi.value}
-            </div>
-            
-            <div style={{ fontSize: "16px", fontWeight: "600", color: "#374151", marginTop: "10px" }}>
-              {kpi.title}
-            </div>
-            
-            <div style={{ fontSize: "14px", color: "#9ca3af", marginTop: "5px" }}>
-              {kpi.trend}
-            </div>
-          </div>
+            icon={kpi.icon}
+            title={kpi.title}
+            value={kpi.value}
+            trend={kpi.trend}
+            color={
+              index === 0
+                ? "from-green-500 to-green-600"
+                : index === 1
+                ? "from-emerald-500 to-green-500"
+                : index === 2
+                ? "from-red-500 to-red-600"
+                : index === 3
+                ? "from-blue-500 to-indigo-600"
+                : index === 4
+                ? "from-yellow-500 to-orange-500"
+                : "from-purple-500 to-violet-600"
+            }
+          />
         ))}
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "20px",
-          marginBottom: "40px",
-        }}
-      >
-        <HealthChart farms={farms} />
-        <ProfitTrendChart farms={farms} />
+      <div className="mb-12 grid gap-8 lg:grid-cols-2">
+        <div className="rounded-3xl border border-green-100 bg-white p-6 shadow-lg transition hover:shadow-xl">
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold">📈 Farm Health Trend</h2>
+              <p className="mt-1 text-gray-500">Last 7 Days Performance</p>
+            </div>
+            <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-700">
+              Live
+            </span>
+          </div>
+          <HealthChart farms={farms} />
+        </div>
+        <div className="rounded-3xl border border-green-100 bg-white p-6 shadow-lg transition hover:shadow-xl">
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold">💰 Profit Trend</h2>
+              <p className="mt-1 text-gray-500">Revenue Analytics</p>
+            </div>
+            <span className="rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-700">
+              Updated
+            </span>
+          </div>
+          <ProfitTrendChart farms={farms} />
+        </div>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "20px",
-          marginBottom: "40px",
-        }}
-      >
-        <MarketWidget farms={farms} />
-        <WeatherWidget farms={farms} />
+      <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        {/* Market Intelligence */}
+        <div className="bg-white rounded-3xl border border-green-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+          <div className="px-8 py-6 border-b border-green-100">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">
+                  📊 Market Intelligence
+                </h2>
+                <p className="text-gray-500 mt-2">
+                  Best selling opportunity
+                </p>
+              </div>
+              <span className="px-4 py-2 rounded-full bg-green-100 text-green-700 font-semibold">
+                Live
+              </span>
+            </div>
+          </div>
+          <div className="p-8">
+            <MarketWidget farms={farms} />
+          </div>
+        </div>
+
+        {/* Weather */}
+        <div className="bg-white rounded-3xl border border-green-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+          <div className="px-8 py-6 border-b border-green-100">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold">
+                  🌤 Current Weather
+                </h2>
+                <p className="text-gray-500 mt-2">
+                  Live weather conditions
+                </p>
+              </div>
+              <span className="px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold">
+                Live API
+              </span>
+            </div>
+          </div>
+          <div className="p-8">
+            <WeatherWidget farms={farms} />
+          </div>
+        </div>
       </div>
 
-      <div
-        style={{
-          marginBottom: "55px",
-        }}
-      >
-        <AIInsights farms={farms} />
+      <div className="mb-14">
+        <div
+          className="
+            bg-white
+            rounded-3xl
+            border
+            border-green-100
+            shadow-lg
+            overflow-hidden
+          "
+        >
+          <div className="flex items-center justify-between px-8 py-7 border-b border-green-100">
+            <div>
+              <h2 className="text-4xl font-bold">
+                🤖 AI Crop Intelligence
+              </h2>
+              <p className="text-gray-500 mt-2">
+                Powered by Gemini AI
+              </p>
+            </div>
+            <div
+              className="
+                h-24
+                w-24
+                rounded-full
+                bg-gradient-to-br
+                from-green-500
+                to-green-600
+                text-white
+                flex
+                flex-col
+                items-center
+                justify-center
+                shadow-xl
+              "
+            >
+              <span className="text-2xl font-bold">
+                96%
+              </span>
+              <span className="text-xs">
+                Confidence
+              </span>
+            </div>
+          </div>
+          <div className="p-8">
+            <AIInsights farms={farms} />
+          </div>
+        </div>
       </div>
 
       <div
@@ -363,16 +425,25 @@ function Dashboard() {
       </div>
 
       {farms.length === 0 ? (
-        <div
-          style={{
-            textAlign: "center",
-            padding: "50px",
-            background: "white",
-            borderRadius: "20px",
-            boxShadow: "0 5px 20px rgba(0,0,0,0.08)",
-          }}
-        >
-          <h2>No farm data available</h2>
+        <div className="rounded-[36px] border border-dashed border-green-200 bg-white py-20 shadow-lg">
+          <div className="mx-auto max-w-xl text-center">
+            <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-green-100 text-6xl">
+              🌱
+            </div>
+            <h2 className="mt-8 text-4xl font-black text-gray-900">
+              No Farms Yet
+            </h2>
+            <p className="mx-auto mt-5 max-w-lg text-lg leading-8 text-gray-600">
+              Start your smart farming journey by creating your first farm analysis.
+              KrishiSathi AI will generate crop recommendations, weather insights, market intelligence and profitability reports.
+            </p>
+            <button
+              onClick={() => navigate("/analysis")}
+              className="mt-10 rounded-2xl bg-green-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-green-700"
+            >
+              🚀 Analyze My First Farm
+            </button>
+          </div>
         </div>
       ) : (
         <div
@@ -404,108 +475,129 @@ function Dashboard() {
       )}
 
       {editingFarm && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 999,
-          }}
-        >
-          <div
-            style={{
-              background: "#fff",
-              padding: "30px",
-              borderRadius: "15px",
-              width: "450px",
-            }}
-          >
-            <h2 style={{ marginBottom: "20px" }}>Edit Farm</h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-6">
+          <div className="w-full max-w-2xl overflow-hidden rounded-[36px] bg-white shadow-2xl">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-green-700 via-green-600 to-emerald-600 p-8 text-white">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm uppercase tracking-[4px]">
+                    Farm Management
+                  </p>
+                  <h2 className="mt-3 text-4xl font-black">
+                    🌾 Edit Farm
+                  </h2>
+                  <p className="mt-3 text-green-100">
+                    Update your farm information.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setEditingFarm(null)}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl transition hover:bg-red-500"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
 
-            <input
-              style={{ width: "100%", padding: "10px", marginBottom: "15px", borderRadius: "8px", border: "1px solid #ccc" }}
-              value={editForm.location}
-              onChange={(e) =>
-                setEditForm({
-                  ...editForm,
-                  location: e.target.value,
-                })
-              }
-              placeholder="Location"
-            />
+            {/* Form */}
+            <div className="space-y-6 p-8">
+              <div>
+                <label className="mb-2 block font-semibold">
+                  📍 Location
+                </label>
+                <input
+                  className="w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none transition focus:border-green-600"
+                  value={editForm.location}
+                  onChange={(e) =>
+                    setEditForm({
+                      ...editForm,
+                      location: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label className="mb-2 block font-semibold">
+                  🌾 Crop
+                </label>
+                <input
+                  className="w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none transition focus:border-green-600"
+                  value={editForm.crop}
+                  onChange={(e) =>
+                    setEditForm({
+                      ...editForm,
+                      crop: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block font-semibold">
+                    📅 Month
+                  </label>
+                  <input
+                    className="w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none transition focus:border-green-600"
+                    value={editForm.month}
+                    onChange={(e) =>
+                      setEditForm({
+                        ...editForm,
+                        month: e.target.value,
+                      })
+                    }
+                />
+                </div>
+                <div>
+                  <label className="mb-2 block font-semibold">
+                    🌡 Temperature
+                  </label>
+                  <input
+                    type="number"
+                    className="w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none transition focus:border-green-600"
+                    value={editForm.temperature}
+                    onChange={(e) =>
+                      setEditForm({
+                        ...editForm,
+                        temperature: Number(e.target.value),
+                      })
+                    }
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="mb-2 block font-semibold">
+                  🌱 Soil Type
+                </label>
+                <input
+                  className="w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none transition focus:border-green-600"
+                  value={editForm.soil_type}
+                  onChange={(e) =>
+                    setEditForm({
+                      ...editForm,
+                      soil_type: e.target.value,
+                    })
+                  }
+                />
+              </div>
+            </div>
 
-            <input
-              style={{ width: "100%", padding: "10px", marginBottom: "15px", borderRadius: "8px", border: "1px solid #ccc" }}
-              value={editForm.crop}
-              onChange={(e) =>
-                setEditForm({
-                  ...editForm,
-                  crop: e.target.value,
-                })
-              }
-              placeholder="Crop"
-            />
-
-            <input
-              style={{ width: "100%", padding: "10px", marginBottom: "15px", borderRadius: "8px", border: "1px solid #ccc" }}
-              value={editForm.month}
-              onChange={(e) =>
-                setEditForm({
-                  ...editForm,
-                  month: e.target.value,
-                })
-              }
-              placeholder="Month"
-            />
-
-            <input
-              style={{ width: "100%", padding: "10px", marginBottom: "15px", borderRadius: "8px", border: "1px solid #ccc" }}
-              value={editForm.temperature}
-              onChange={(e) =>
-                setEditForm({
-                  ...editForm,
-                  temperature: Number(e.target.value),
-                })
-              }
-              placeholder="Temperature"
-            />
-
-            <input
-              style={{ width: "100%", padding: "10px", marginBottom: "20px", borderRadius: "8px", border: "1px solid #ccc" }}
-              value={editForm.soil_type}
-              onChange={(e) =>
-                setEditForm({
-                  ...editForm,
-                  soil_type: e.target.value,
-                })
-              }
-              placeholder="Soil Type"
-            />
-
-            <div
-              style={{
-                display: "flex",
-                gap: "15px",
-              }}
-            >
-              <button
-                style={{ flex: 1, padding: "12px", background: "#0a8f3c", color: "#fff", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "bold" }}
-                onClick={handleUpdate}
-              >
-                Save
-              </button>
-
-              <button
-                style={{ flex: 1, padding: "12px", background: "#6b7280", color: "#fff", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "bold" }}
-                onClick={() =>
-                  setEditingFarm(null)
-                }
-              >
-                Cancel
-              </button>
+            {/* Footer */}
+            <div className="border-t bg-gray-50 p-6">
+              <div className="flex gap-5">
+                <button
+                  onClick={() => setEditingFarm(null)}
+                  className="flex-1 rounded-2xl border border-gray-300 py-4 font-semibold transition hover:bg-gray-100"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleUpdate}
+                  className="flex-1 rounded-2xl bg-green-600 py-4 font-semibold text-white shadow-lg transition hover:bg-green-700"
+                >
+                  💾 Save Changes
+                </button>
+              </div>
             </div>
           </div>
         </div>

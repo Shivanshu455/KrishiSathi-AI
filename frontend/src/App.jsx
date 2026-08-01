@@ -1,4 +1,3 @@
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -16,48 +15,51 @@ import CropPlanner from "./pages/CropPlanner";
 
 function App() {
   return (
-    <>
+    <div className="flex min-h-screen w-full flex-col">
+      
       <Navbar />
 
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/components" element={<ComponentsDemo />} />
+      <main className="flex-grow w-full">
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/components" element={<ComponentsDemo />} />
 
-        {/* Protected Routes */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+          {/* Protected Routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/analysis"
-          element={
-            <ProtectedRoute>
-              <FarmAnalysis />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/analysis"
+            element={
+              <ProtectedRoute>
+                <FarmAnalysis />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/crop-planner"
-          element={
-            <ProtectedRoute>
-              <CropPlanner />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+          <Route
+            path="/crop-planner"
+            element={
+              <ProtectedRoute>
+                <CropPlanner />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

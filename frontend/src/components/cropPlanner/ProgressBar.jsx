@@ -1,51 +1,112 @@
+import { Sparkles } from "lucide-react";
+
 function ProgressBar({
-
-    currentStep,
-
-    totalSteps
-
+  currentStep,
+  totalSteps,
 }) {
+  const progress = (currentStep / totalSteps) * 100;
 
-    const percentage =
-        (currentStep / totalSteps) * 100;
+  return (
+    <div className="mb-12">
 
-    return (
+      {/* Header */}
 
-        <div className="mb-10">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
-            <div className="flex justify-between mb-2">
+        <div>
 
-                <p className="text-gray-600">
+          <div className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2">
 
-                    Step {currentStep} of {totalSteps}
+            <Sparkles
+              size={16}
+              className="text-green-600"
+            />
 
-                </p>
+            <span className="text-sm font-semibold text-green-700">
 
-                <p className="font-semibold text-green-700">
+              AI Crop Planner
 
-                    {Math.round(percentage)}%
+            </span>
 
-                </p>
+          </div>
 
-            </div>
+          <h1 className="mt-5 text-4xl font-black text-gray-900">
 
-            <div
-                className="w-full bg-gray-200 rounded-full h-3"
-            >
+            Let's Find The Perfect Crop
 
-                <div
-                    className="bg-green-600 h-3 rounded-full transition-all duration-500"
-                    style={{
-                        width: `${percentage}%`
-                    }}
-                />
+          </h1>
 
-            </div>
+          <p className="mt-3 max-w-2xl text-lg leading-8 text-gray-600">
+
+            Answer a few simple questions and our AI will
+            analyse your farm to recommend the most suitable
+            and profitable crop.
+
+          </p>
 
         </div>
 
-    );
+        {/* Step Badge */}
 
+        <div className="rounded-3xl border border-green-200 bg-green-50 px-8 py-6 text-center">
+
+          <p className="text-sm font-semibold uppercase tracking-widest text-green-700">
+
+            Step
+
+          </p>
+
+          <h2 className="mt-2 text-4xl font-black text-green-700">
+
+            {currentStep}
+
+            <span className="text-gray-400">
+
+              /{totalSteps}
+
+            </span>
+
+          </h2>
+
+        </div>
+
+      </div>
+
+      {/* Progress */}
+
+      <div className="mt-10">
+
+        <div className="flex justify-between text-sm font-semibold text-gray-600">
+
+          <span>
+
+            Progress
+
+          </span>
+
+          <span>
+
+            {Math.round(progress)}% Complete
+
+          </span>
+
+        </div>
+
+        <div className="mt-3 h-4 overflow-hidden rounded-full bg-gray-200">
+
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-green-500 to-emerald-600 transition-all duration-700"
+            style={{
+              width: `${progress}%`,
+            }}
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+  );
 }
 
 export default ProgressBar;

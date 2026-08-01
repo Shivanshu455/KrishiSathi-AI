@@ -21,6 +21,7 @@ load_dotenv()
 from routes.weather import router as weather_router
 from routes.profit import router as profit_router
 
+
 app = FastAPI(
     title="KrishiSathi API"
 )
