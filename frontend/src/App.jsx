@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import ComponentsDemo from "./pages/ComponentsDemo";
 import FarmAnalysis from "./pages/FarmAnalysis";
 import CropPlanner from "./pages/CropPlanner";
+import MarketInsight from "./pages/MarketInsight";
 
 function App() {
   return (
@@ -52,6 +53,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CropPlanner />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/market-insight"
+            element={
+              <ProtectedRoute>
+                <MarketInsight />
               </ProtectedRoute>
             }
           />
