@@ -1,411 +1,183 @@
-# 🌾 KrishiSathi AI
+# 🌾 KrishiSathi — AI-Powered Smart Agriculture Platform
 
-An AI-Powered Smart Agriculture Decision Support Platform designed to help farmers make better farming decisions using crop intelligence, market analysis, weather insights, and AI-driven recommendations.
+KrishiSathi is an AI-powered smart agriculture platform designed to help farmers make data-driven decisions across crop selection, cultivation planning, weather intelligence, market insights, profit estimation, and farm management.
 
----
-
-# 📌 Project Overview
-
-Agriculture faces several challenges including unpredictable weather conditions, fluctuating market prices, inefficient crop selection, and lack of data-driven decision making.
-
-KrishiSathi aims to address these challenges by providing:
-
-- Crop Health Analysis
-- AI-based Recommendations
-- Market Intelligence
-- Weather Insights
-- Profit Estimation
-- Agricultural Analytics Dashboard
-
-The system combines Full Stack Development with Artificial Intelligence to build an intelligent farming assistant.
+The platform combines modern full-stack technologies with Google Gemini AI to transform agricultural data into actionable, farmer-friendly recommendations.
 
 ---
 
-# 🚀 Features
+## 🚀 Live Application
 
-## 🔐 Authentication
+### Frontend
+https://krishi-sathi-ai.vercel.app
 
-- User Registration
-- User Login
-- JWT Authentication
-- Google OAuth Login
-- Protected Routes
+### Backend API
+https://krishisathi-ai-backend.onrender.com
+
+### GitHub Repository
+https://github.com/Shivanshu455/KrishiSathi-AI
 
 ---
+
+## 📸 Screenshots
+
+> Add your actual screenshots to the `screenshots/` folder before committing.
+
+### Home
+![KrishiSathi Home](./screenshots/home.png)
+
+### Farmer Dashboard
+![KrishiSathi Dashboard](./screenshots/dashboard.png)
+
+### Farm Analyzer
+![Farm Analyzer](./screenshots/farm-analyzer.png)
+
+### Weather Intelligence
+![Weather Intelligence](./screenshots/weather.png)
+
+---
+
+# ✨ Features
 
 ## 🌱 AI Crop Recommendation
 
-- AI-powered crop recommendation
-- Crop suitability scoring
-- Weather-aware recommendations
-- Soil compatibility analysis
-- Budget-aware suggestions
+Provides crop recommendations based on agricultural inputs such as:
+
+- Soil type
+- Location
+- Season
+- Environmental conditions
+
+The recommendation system uses Google Gemini AI to generate contextual agricultural guidance.
 
 ---
 
-## 🌦 Weather Intelligence
+## 🧠 AI-Powered Agricultural Assistance
 
-- Real-time weather information
-- Temperature
-- Humidity
-- Wind Speed
-- Weather Conditions
+KrishiSathi uses the Google Gemini API to transform agricultural information into understandable and actionable recommendations.
 
----
+The AI layer supports:
 
-## 🌾 AI Cultivation Planner
-
-Generate a complete cultivation roadmap including:
-
-- Land Preparation
-- Seed Selection
-- Irrigation Schedule
-- Fertilizer Planning
-- Pest Management
-- Harvesting Guide
-- Storage Tips
-
-Powered by Google Gemini 2.5 Flash.
+- Crop recommendations
+- Cultivation planning
+- Agricultural decision support
+- Farmer-friendly explanations
+- Context-aware recommendations
 
 ---
 
-## 📈 Profit Simulator
+## 🌾 Cultivation Planning
 
-Compare multiple recommended crops based on:
+Generates structured cultivation guidance to help farmers understand the major stages involved in growing a selected crop.
 
-- Investment
-- Revenue
-- Profit
-- ROI
-- Market Demand
-- Financial Risk
+The platform can provide step-by-step guidance from sowing through harvesting based on the available agricultural context.
 
 ---
 
-## 🤖 AI Business Advisor
+## 🌦️ Weather Intelligence
 
-Uses Gemini AI to analyze:
+Provides weather-related information to help farmers make better decisions around:
 
-- Highest Profit Crop
-- Best ROI
-- Lowest Risk
-- Budget Friendly Crop
-- Final Recommendation
-
----
-
-## 📊 Farm Management
-
-- Farm Analysis
-- Save Farm Records
-- Search Farms
-- Update Farms
-- Delete Farms
-- Dashboard Analytics
+- Sowing
+- Irrigation
+- Crop management
+- Harvesting
+- Weather-sensitive activities
 
 ---
 
-## ☁ Cloud Storage
+## 📈 Market Insights
 
-- MongoDB Atlas
-- Persistent Storage
-- Cloud Database
+Provides market-oriented information including:
 
----
-
-# 🛠 Technology Stack
-
-## Frontend
-- React.js
-- Vite
-- React Router DOM
-- Recharts
-
-## Backend
-- FastAPI
-- Pydantic
-- Uvicorn
-
-## Database
-- MongoDB Atlas
-- PyMongo
-
-## Development Tools
-- Postman
-- Git
-- GitHub
-- VS Code
-
-## AI Technologies
-- Google Gemini 2.5 Flash
-- Prompt Engineering
-- Rule-Based Recommendation Engine
-- AI Business Advisor
-- AI Cultivation Planner
+- Market recommendation
+- Price trends
+- Potentially suitable markets
+- Crop-specific market insights
 
 ---
 
-# 🏗 System Architecture
+## 💰 Profit Simulation
+
+Helps farmers estimate potential profitability using agricultural and market-related inputs.
+
+This provides an additional decision-support layer before committing resources to a crop.
+
+---
+
+## 🧑‍🌾 Farm Management
+
+Farmers can manage their farm information and use stored farm data for generating agricultural recommendations.
+
+---
+
+## 📊 Interactive Dashboard
+
+The dashboard provides a centralized view of the farmer's agricultural information and generated insights.
+
+---
+
+## 🔐 Authentication
+
+The application supports secure user authentication using:
+
+- JWT authentication
+- Google OAuth
+
+---
+
+## 🌙 Dark Mode
+
+The frontend supports light and dark interface modes for improved usability in different lighting conditions.
+
+---
+
+## 📱 Responsive UI
+
+The application is designed to provide a consistent experience across:
+
+- Desktop
+- Tablet
+- Mobile
+
+---
+
+## 🛡️ API Rate Limiting
+
+The backend implements API rate limiting to help protect services from excessive requests and improve application stability.
+
+---
+
+# 🧠 Artificial Intelligence
+
+## Model Used
+
+**Google Gemini API**
+
+KrishiSathi uses the Gemini API as its primary AI reasoning layer.
+
+### AI Workflow
 
 ```text
-User Input
-    ↓
-React Frontend
-    ↓
-FastAPI REST API
-    ↓
-AI Recommendation Engine
-    ↓
-MongoDB Atlas
-    ↓
-Dashboard Analytics
-```
-
----
-
-# 🗄 Database Choice
-
-KrishiSathi uses MongoDB Atlas as its primary database.
-
-MongoDB was selected because agricultural datasets are semi-structured and continuously evolving. New features such as weather intelligence, disease prediction, satellite imagery analysis, and AI-generated insights can be added without requiring rigid schema migrations.
-
-The document-oriented architecture of MongoDB provides flexibility and scalability for future enhancements.
-
----
-
-# 📂 Database Schema
-
-## Farm Collection Fields
-
-| Field | Type |
-|-------|------|
-| _id | ObjectId |
-| location | String |
-| crop | String |
-| month | String |
-| temperature | Float |
-| soil_type | String |
-| health_score | Integer |
-| confidence | Integer |
-| recommendation | String |
-| analysis_factors | Array |
-| best_market | String |
-| market_price | Integer |
-| recommended_market | String |
-| expected_profit | Integer |
-| travel_time | Float |
-| fuel_cost | Integer |
-| created_at | DateTime |
-
----
-
-## Schema Diagram
-
-![Schema Diagram](./docs/schema_diagram.png)
-
----
-
-# 🔌 API Endpoints
-
-## Farm APIs
-
-### Create Farm Analysis
-```http
-POST /farm/analyze
-```
-
-### Get All Farms
-```http
-GET /farm
-```
-
-### Get Single Farm
-```http
-GET /farm/{farm_id}
-```
-
-### Update Farm
-```http
-PUT /farm/update/{farm_id}
-```
-
-### Delete Farm
-```http
-DELETE /farm/delete/{farm_id}
-```
-
-### Search Farms
-```http
-GET /farm/search?crop=wheat
-```
-## Authentication APIs
-
-POST /auth/register
-POST /auth/login
-POST /auth/google
-GET /auth/me
-
-## AI APIs
-
-POST /recommend-crops
-POST /generate-cultivation-plan
-POST /profit-simulation
-
-## Weather API
-GET /weather/{city}
----
-
-# ⚙ Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/Shivanshu455/KrishiSathi-AI/tree/main
-```
-
----
-
-## Backend Setup
-
-```bash
-cd backend
-```
-
-Create:
-
-```text
-.env
-```
-
-Add:
-
-```env
-MONGO_URI=your_mongodb_connection_string
-GEMINI_API_KEY=your_gemini_api_key
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run backend:
-
-```bash
-uvicorn main:app --reload
-```
-
-Backend URL:
-
-```text
-http://127.0.0.1:8000
-```
-
-Swagger Documentation:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
----
-
-## Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend URL:
-
-```text
-http://localhost:5173
-```
-
----
-
-# 🔐 Environment Variables
-
-Create:
-
-```text
-backend/.env
-```
-
-Required variables:
-
-```env
-MONGO_URI=your_mongodb_connection_string
-GEMINI_API_KEY=your_gemini_api_key
-```
-
-Example file:
-
-```text
-backend/.env.example
-```
-
-```env
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/krishisathi
-GEMINI_API_KEY=your_api_key_here
-```
-
----
-
-# 📈 Week 5 Deliverables
-
-Completed deliverables:
-
-- MongoDB Atlas Integration
-- Persistent Cloud Storage
-- Full CRUD Operations
-- Schema Design
-- CRUD Verification
-- Dashboard Analytics
-- Environment Variable Configuration
-- Database Documentation
-
----
-
-# 🚀 Future Enhancements
-
-- Disease Detection using Computer Vision
-- AI Farm Digital Twin
-- Seasonal Crop Prediction
-- Market Price Forecasting
-- Satellite Image Analysis
-- Smart Irrigation Recommendation
-- AI Chat Assistant
-- PDF Report Generation
-- Mobile Application
-- Interactive Farm Map
-- Deployment and Cloud Hosting
-
-# 📷 Screenshots
-Coming Soon
-
-- Login Page
-- Dashboard
-- Crop Recommendation
-- Weather Analysis
-- AI Cultivation Plan
-- Profit Comparison
-- AI Business Advisor
-
----
-
-# 👨‍💻 Author
-
-**Shivanshu**
-
-AI Assisted Full Stack Development Internship Project
-
-Graphic Era University TBI Summer Internship Program 2026
-
----
-
-# 📄 License
-
-This project is developed for academic and internship purposes.
+Farmer Input
+     │
+     ▼
+Soil / Location / Season / Crop Data
+     │
+     ▼
+FastAPI Backend
+     │
+     ▼
+Prompt Engineering
+     │
+     ▼
+Google Gemini API
+     │
+     ▼
+AI-Generated Recommendation
+     │
+     ▼
+Backend Processing & Validation
+     │
+     ▼
+Farmer Dashboard
