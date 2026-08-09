@@ -44,7 +44,7 @@ function MeetDeveloper() {
 
           <h2 className="mt-8 text-5xl font-black leading-tight">
             Shivanshu
-            <span className="block text-green-400">Dhiman</span>
+            <span className="block text-green-400">Samkria</span>
           </h2>
 
           <p className="mt-8 text-lg leading-9 text-slate-300">
@@ -79,19 +79,37 @@ function MeetDeveloper() {
 
           {/* Social */}
           <div className="mt-10 flex gap-5">
-            <a href="#">
+            {/* GitHub */}
+            <a
+              href="https://github.com/Shivanshu455"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
               <FaGithub
                 className="transition hover:text-green-400"
                 size={30}
               />
             </a>
-            <a href="#">
+
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/shivanshuu45"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               <FaLinkedin
                 className="transition hover:text-green-400"
                 size={30}
               />
             </a>
-            <a href="#">
+
+            {/* Email */}
+            <a
+              href="mailto:dshivanshu09@gmail.com"
+              aria-label="Email"
+            >
               <FaEnvelope
                 className="transition hover:text-green-400"
                 size={30}

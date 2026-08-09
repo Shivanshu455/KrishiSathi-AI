@@ -7,7 +7,7 @@ import {
   BarChart3,
 } from "lucide-react";
 
-import farmerImage from "../../assets/images/hero/hero-main.png";
+import farmerImage from "../../assets/images/hero/hero-main2.png";
 
 const benefits = [
   {
